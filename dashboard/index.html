@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SwarmShield Dashboard</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6' fill='%234aa3ff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">SwarmShield <span class="sub">mission ledger for drone clusters (search and rescue)</span></div>
+  <div class="badges">
+    <span id="mockBanner" class="badge mock" hidden>MOCK ENGINE RUN: simulated consensus, unsigned votes</span>
+    <span id="conn" class="badge off">connecting</span>
+    <span id="runId" class="badge">run: -</span>
+    <a class="badge link" href="/mst/setup.html" target="_blank" rel="noopener">Mission Setup (MST)</a>
+  </div>
+</header>
+
+<main class="grid">
+  <section class="card map" id="pMap">
+    <h2>Map <span class="hint">200 m x 100 m. Solid dot = cluster's accepted track, ring = true position</span></h2>
+    <svg id="mapSvg" viewBox="-6 -10 212 120" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Map of both zones with drones and tracked objects"></svg>
+    <div class="legend">
+      <span><i class="dot c1"></i> cluster 1</span><span><i class="dot c2"></i> cluster 2</span>
+      <span><i class="ring"></i> master</span><span><i class="dia"></i> hardware board (light)</span>
+      <span><i class="dot grey"></i> radio dead</span><span class="red">X revoked</span>
+    </div>
+    <div id="nodeStrip" class="nodestrip"></div>
+  </section>
+
+  <section class="card controls" id="pControls">
+    <h2>Controls</h2>
+    <div class="row">
+      <select id="scnSel" aria-label="scenario"></select>
+      <button id="btnScn" class="pri">Start scenario</button>
+      <button id="btnScnStop">Stop</button>
+    </div>
+    <div class="row">
+      <button id="btnObj1">Start OBJ-1</button>
+      <button id="btnObj2">Start OBJ-2</button>
+    </div>
+    <div class="row">
+      <button id="btnKill">Kill C1 master</button>
+      <button id="btnRevive">Revive killed</button>
+    </div>
+    <div class="row">
+      <button id="btnPart">Partition clusters</button>
+      <button id="btnHeal">Heal</button>
+      <button id="btnDrop">Drop 20%</button>
+    </div>
+    <div class="row">
+      <select id="faultSel" aria-label="simulated drone"></select>
+      <button id="btnEquiv">Fault: equivocate</button>
+      <button id="btnFalse">Fault: false obs</button>
+    </div>
+    <div class="row">
+      <button id="btnExport">Export run</button>
+      <span id="toast" class="toast" role="status"></span>
+    </div>
+  </section>
+
+  <section class="card chains" id="pChains">
+    <h2>Chains <span class="hint">one ledger per cluster, dots = QC signers (size = weight)</span></h2>
+    <div class="cols">
+      <div id="chain1" class="chain"></div>
+      <div id="chain2" class="chain"></div>
+    </div>
+  </section>
+
+  <section class="card timeline" id="pTimeline">
+    <h2>Timeline <input id="filter" type="search" placeholder="filter: xc, revoked, c1-d3 ..." aria-label="filter timeline"></h2>
+    <ol id="tl" class="tl"></ol>
+  </section>
+
+  <section class="card mst" id="pMst">
+    <h2>MST (public chain: before and after flight)</h2>
+    <div id="mstBody" class="mstbody"></div>
+  </section>
+
+  <section class="card metrics" id="pMetrics">
+    <h2>Metrics <span class="hint">measured; cross-node times use the observer receive clock</span></h2>
+    <div id="metricsBody"></div>
+  </section>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>

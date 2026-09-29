@@ -1,0 +1,18 @@
+name: demo
+description: >
+  Acts 1-4 of the demo on simulated drones (search and rescue: a drifting boat crosses two zones).
+  Act 1 certified handoff, Act 2 master killed, Act 3 simulated equivocator, Act 4 partition with a deferred handoff.
+timeline:
+  - {t: 2,  do: note, message: "Act 1: OBJ-1 (drifting boat) starts drifting east"}
+  - {t: 2,  do: start_object, obj: OBJ-1}
+  - {t: 28, do: note, message: "Act 2: kill the master of cluster 1"}
+  - {t: 28, do: kill, node: c1-d1}
+  - {t: 38, do: revive, node: c1-d1}
+  - {t: 42, do: note, message: "Act 3: a simulated drone signs two conflicting votes"}
+  - {t: 42, do: fault, node: c1-d3, mode: equivocate}
+  - {t: 54, do: note, message: "Act 4: partition the two clusters (jamming); OBJ-2 appears"}
+  - {t: 54, do: partition}
+  - {t: 55, do: start_object, obj: OBJ-2}
+  - {t: 80, do: heal}
+  - {t: 100, do: note, message: "Export the run"}
+  - {t: 100, do: export}

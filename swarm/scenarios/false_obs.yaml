@@ -1,0 +1,6 @@
+name: false_obs
+description: One drone lies about the world (+30 m on x). Median fusion bounds the damage, its deviation score is flagged, and it is NOT revoked (a lie about the world is not provable).
+timeline:
+  - {t: 2,  do: start_object, obj: OBJ-1}
+  - {t: 6,  do: fault, node: c1-d2, mode: false_obs}
+  - {t: 30, do: export}

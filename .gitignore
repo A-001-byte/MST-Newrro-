@@ -1,0 +1,38 @@
+# ---- secrets (NEVER commit) ----
+.env
+.keys/
+firmware/**/config.h
+*.pem
+*.key
+
+# ---- python ----
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+build/
+dist/
+
+# ---- node / hardhat ----
+node_modules/
+contracts/artifacts/
+contracts/cache/
+contracts/typechain-types/
+contracts/coverage/
+contracts/coverage.json
+
+# ---- run exports (keep README + the curated final demo run only) ----
+runs/*
+!runs/README.md
+!runs/demo-final/
+
+# ---- arduino / OS / editors ----
+firmware/**/build/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

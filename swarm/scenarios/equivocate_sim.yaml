@@ -1,0 +1,5 @@
+name: equivocate_sim
+description: Act 3 with a simulated drone (the hardware board is out of scope for this lane). It double-signs prevotes, peers produce evidence and revoke it.
+timeline:
+  - {t: 8,  do: fault, node: c1-d3, mode: equivocate}
+  - {t: 30, do: export}

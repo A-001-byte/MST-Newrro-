@@ -1,0 +1,213 @@
+{
+  "_comment": "DEV/MOCK fixture: FAKE addresses and pubkeys derived from names, NO private keys. Mock engine only. Shape = MST-Newrro-/config/mission.example.json. Never use for anything real.",
+  "version": 1,
+  "missionName": "swarmshield-dev-mock",
+  "missionId": "0x273cdaf9b4baed3b2b9b01f60fcb37b6a30afeaf7c82e21b813611f1fbb2bc10",
+  "rosterHash": "0x2591a8b365c250fe73a5b6c0aa754e4aa3ef9ed87a95e0ec767fbf45822dd720",
+  "hardwareProposes": false,
+  "timing": {
+    "TICK_MS": 50,
+    "TIMEOUT_PROPOSE_MS": 1500,
+    "TIMEOUT_PREVOTE_MS": 1000,
+    "TIMEOUT_PRECOMMIT_MS": 1000,
+    "TIMEOUT_DELTA_MS": 500,
+    "COMMIT_INTERVAL_MS": 1000,
+    "MAX_TXS_PER_BLOCK": 64,
+    "ROLE_SILENCE_MS": 3000,
+    "HELLO_INTERVAL_MS": 1000,
+    "PEER_SILENCE_MS": 5000,
+    "XC_TIMEOUT_MS": 8000,
+    "XC_RETRY_MS": 2000,
+    "OBS_INTERVAL_MS": 1000,
+    "REGISTER_INTERVAL_MS": 2000
+  },
+  "fusion": {
+    "FUSION_WINDOW_HEIGHTS": 5,
+    "FUSION_MIN_MEMBERS": 2,
+    "HANDOFF_MARGIN_CM": 1000
+  },
+  "world": {
+    "width_cm": 20000,
+    "height_cm": 10000,
+    "SENSOR_RANGE_CM": 6000,
+    "SENSOR_SIGMA_CM": 200,
+    "objects": [
+      {
+        "id": "OBJ-1",
+        "label": "drifting boat (search & rescue)",
+        "start": [
+          2000,
+          5000
+        ],
+        "end": [
+          18000,
+          5000
+        ],
+        "speed_cmps": 500,
+        "initialCustody": 1,
+        "startOn": "director command start_object (Act 1)"
+      },
+      {
+        "id": "OBJ-2",
+        "label": "second boat (Act 4: handoff deferred during partition)",
+        "start": [
+          2000,
+          3000
+        ],
+        "end": [
+          18000,
+          3000
+        ],
+        "speed_cmps": 500,
+        "initialCustody": 1,
+        "startOn": "scenario, during the partition (Act 4)"
+      }
+    ]
+  },
+  "clusters": [
+    {
+      "clusterId": 1,
+      "zone": {
+        "xMin_cm": 0,
+        "xMax_cm": 10000,
+        "yMin_cm": 0,
+        "yMax_cm": 10000
+      },
+      "initialMaster": "c1-d1",
+      "members": [
+        {
+          "name": "c1-d1",
+          "address": "0xc8123dd747faaab157f2c70543c753be209afef3",
+          "pubkey": "0x042fcf0d08234387a2066cf8e96ccd058773480f026781e67e46b62981d5d35d1a2fcf0d08234387a2066cf8e96ccd058773480f026781e67e46b62981d5d35d1a",
+          "weight": 3,
+          "flags": 0,
+          "host": "B",
+          "pos_cm": [
+            5000,
+            5000
+          ]
+        },
+        {
+          "name": "c1-d2",
+          "address": "0xc2efe404ae9e971335d63d69cc6f91dbbd107f1b",
+          "pubkey": "0x04ab5f8ad9a10ddad7a2b08ff31869487a219b4fe32d36b413aa6d88d002c51095ab5f8ad9a10ddad7a2b08ff31869487a219b4fe32d36b413aa6d88d002c51095",
+          "weight": 3,
+          "flags": 0,
+          "host": "B",
+          "pos_cm": [
+            3000,
+            3000
+          ]
+        },
+        {
+          "name": "c1-d3",
+          "address": "0xa07d40f8d49122b413d2e2c8a5d47496d1d394ba",
+          "pubkey": "0x042470d9179865cf8ffdf6367f876a10508bfafa4f08ce482707fb417c525c56642470d9179865cf8ffdf6367f876a10508bfafa4f08ce482707fb417c525c5664",
+          "weight": 3,
+          "flags": 0,
+          "host": "B",
+          "pos_cm": [
+            3000,
+            7000
+          ]
+        },
+        {
+          "name": "c1-d4",
+          "address": "0xf16969f5f941b19027dc51a6216f809c74aa9109",
+          "pubkey": "0x04667f550687dbce0093dcd2e47bbe29890f50e98050e6b1e8ed3fc35f2f6efbb4667f550687dbce0093dcd2e47bbe29890f50e98050e6b1e8ed3fc35f2f6efbb4",
+          "weight": 3,
+          "flags": 0,
+          "host": "A",
+          "pos_cm": [
+            7000,
+            3000
+          ]
+        },
+        {
+          "name": "c1-board",
+          "address": "0x3330f8e9a88385cb2c26cf7c2866a898ccc3b859",
+          "pubkey": "0x0454a710c5c8d251a4a1dffcbb0149114de3717db53cc246d6df1ce4805d3a866154a710c5c8d251a4a1dffcbb0149114de3717db53cc246d6df1ce4805d3a8661",
+          "weight": 1,
+          "flags": 1,
+          "host": "board",
+          "pos_cm": [
+            7000,
+            7000
+          ]
+        }
+      ]
+    },
+    {
+      "clusterId": 2,
+      "zone": {
+        "xMin_cm": 10000,
+        "xMax_cm": 20000,
+        "yMin_cm": 0,
+        "yMax_cm": 10000
+      },
+      "initialMaster": "c2-d1",
+      "members": [
+        {
+          "name": "c2-d1",
+          "address": "0x15dab5bc611962586d25e6fb7147a08119ea8df4",
+          "pubkey": "0x04e3d04f730b062340ded4aab2628393688a2512578695138a48a4cefbe698cab5e3d04f730b062340ded4aab2628393688a2512578695138a48a4cefbe698cab5",
+          "weight": 3,
+          "flags": 0,
+          "host": "C",
+          "pos_cm": [
+            15000,
+            5000
+          ]
+        },
+        {
+          "name": "c2-d2",
+          "address": "0x2c61e92165ec3bf394f0e25e484dffa2da9ed0bf",
+          "pubkey": "0x043b74af9ef6508137e0c81ed8544c69909ed6dd7699362d7b940f86f5d8362e4d3b74af9ef6508137e0c81ed8544c69909ed6dd7699362d7b940f86f5d8362e4d",
+          "weight": 3,
+          "flags": 0,
+          "host": "C",
+          "pos_cm": [
+            13000,
+            3000
+          ]
+        },
+        {
+          "name": "c2-d3",
+          "address": "0x7a006286fddcac3076cb98353f45c8e5ef179f28",
+          "pubkey": "0x04d0e31157eb10aa703d094cd59f8b890b5b6f3c60510b796481fde03bc2e54643d0e31157eb10aa703d094cd59f8b890b5b6f3c60510b796481fde03bc2e54643",
+          "weight": 3,
+          "flags": 0,
+          "host": "C",
+          "pos_cm": [
+            13000,
+            7000
+          ]
+        },
+        {
+          "name": "c2-d4",
+          "address": "0x5bd2be6da486c3fe9df5b19847dd23b21b0ff61d",
+          "pubkey": "0x049b030967411f129696d4b3bb66a9ea53add58c43d506a601ca4d5a9a5023fe5a9b030967411f129696d4b3bb66a9ea53add58c43d506a601ca4d5a9a5023fe5a",
+          "weight": 3,
+          "flags": 0,
+          "host": "C",
+          "pos_cm": [
+            17000,
+            3000
+          ]
+        },
+        {
+          "name": "c2-d5",
+          "address": "0x9bc82e2fc508848d7e5b929299249a666f823bad",
+          "pubkey": "0x042fd90e0c2f0ffeac6e354f4656afcd5e0837f8674e3596e880085c9bf62bb05e2fd90e0c2f0ffeac6e354f4656afcd5e0837f8674e3596e880085c9bf62bb05e",
+          "weight": 3,
+          "flags": 0,
+          "host": "A",
+          "pos_cm": [
+            17000,
+            7000
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+name: handoff
+description: Act 1 only. OBJ-1 drifts from zone A to zone B; cluster 1 hands custody to cluster 2 with a certified packet.
+timeline:
+  - {t: 2, do: start_object, obj: OBJ-1}
+  - {t: 45, do: export}

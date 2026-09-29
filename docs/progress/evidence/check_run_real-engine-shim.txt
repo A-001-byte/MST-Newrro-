@@ -1,0 +1,43 @@
+run real-engine-shim: 9701 raw events, 5911 after 11.7 dedupe, engine: real/unknown
+times below are the observer receive clock (never different laptops' clocks)
+
+Act 1 [PASS] certified handoff of OBJ-1
+   ok   xc_sent OBJ-1 (C1 -> C2 #1)
+   ok   xc_verified by the destination cluster after xc_sent
+   ok   ownership(OBJ-1 -> C2) via XC_RECV
+   ok   xc_acked back at the source
+   ok   order xc_sent <= xc_verified <= ownership <= xc_acked (observer clock)
+   ok   no xc_rejected (other than benign replay re-relays) for this handoff (1 benign replay)
+   ok   handoff not deferred: xc_sent within 40 s of OBJ-1 start (22298 ms)
+   measured: start_to_xc_sent_ms=22298, handoff_send_to_recv_ms=217, handoff_send_to_ack_ms=1121, certificate_weight=9/13
+
+Act 2 [PASS] master killed, successor takes over
+   ok   fault_injected{kill} of the master (c1-d1)
+   ok   master_changed within 6 s (2922 ms)
+   ok   commits continue in C1 after the change
+   measured: failover_ms=2922, new_master=0x463f98eef3aab1afb77e9243a9e18bf384d57889
+
+Act 3 [PASS] equivocation -> evidence -> revoked
+   ok   evidence(offender) (kind EQUIVOCATION)
+   ok   revoked(offender) after evidence
+   ok   revoked within 3 heights of the evidence (1 heights)
+   ok   cluster keeps committing after revocation
+   measured: evidence_to_revoked_ms=1473, heights=1
+
+Act 4 [PASS] partition -> contingency -> heal -> deferred handoff
+   ok   fault_injected{partition}
+   ok   contingency ENTER in both clusters while partitioned (clusters [1, 2])
+   ok   no xc_sent for OBJ-2 while partitioned (deferred)
+   ok   fault_injected{heal}
+   ok   contingency EXIT in both clusters after heal (clusters [1, 2])
+   ok   xc_sent for OBJ-2 after heal
+   ok   deferred handoff within 30 s of heal (2125 ms)
+   ok   ownership(OBJ-2 -> C2) after heal
+   measured: cut_to_enter_ms=4907, heal_to_exit_ms=922, heal_to_deferred_send_ms=2125
+
+ledger exports: OK   C1 4 exports common prefix 89 blocks IDENTICAL; C2 5 exports common prefix 92 blocks IDENTICAL
+
+Real-engine run: signatures, QCs and evidence were verified by the engine itself. Still outside this checker:
+   history_merged after heal (A6+ feature), on-chain checks (chain_client audit), the hardware board (act 3b)
+
+SUMMARY: all 4 checked acts PASS

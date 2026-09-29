@@ -1,0 +1,7 @@
+name: partition
+description: Act 4 only. Clusters are cut apart; OBJ-2 crosses the handoff line while cut off, so its handoff is deferred until heal.
+timeline:
+  - {t: 8,  do: partition}
+  - {t: 9,  do: start_object, obj: OBJ-2}
+  - {t: 34, do: heal}
+  - {t: 55, do: export}

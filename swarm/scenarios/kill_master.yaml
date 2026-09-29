@@ -1,0 +1,6 @@
+name: kill_master
+description: Act 2 only. The master of cluster 1 loses its radio; a ROLE tx commits and the successor takes over.
+timeline:
+  - {t: 8,  do: kill, node: c1-d1}
+  - {t: 30, do: revive, node: c1-d1}
+  - {t: 40, do: export}

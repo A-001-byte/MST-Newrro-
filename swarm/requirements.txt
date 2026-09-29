@@ -1,0 +1,4 @@
+aiohttp>=3.9
+pyyaml>=6
+pytest>=8
+# real engine (Track A ledger/ package): eth-keys eth-utils pycryptodome
